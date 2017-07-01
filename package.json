@@ -1,0 +1,29 @@
+{
+  "name": "jsimagesegmentation",
+  "version": "1.0.0",
+  "description": "An Javascript Implementation of GraphCut Segmentation",
+  "main": "./src/app.js",
+  "scripts": {
+    "webpack": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "Nícholas André",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-es6-recommended": "^0.1.2",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5",
+    "worker-loader": "^0.8.0"
+  },
+  "dependencies": {
+    "cytoscape": "^3.1.2",
+    "js-graph-algorithms": "^1.0.11",
+    "lodash": "^4.17.4",
+    "sigma": "^1.2.0"
+  }
+}

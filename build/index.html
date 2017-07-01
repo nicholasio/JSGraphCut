@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="An Image Segmentation Algorithm using Graph Cuts and pure Javascript">
+    <meta name="author" content="Nícholas André">
+
+    <title>Image Segmentation with GraphCut</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+        #container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            border: 1px solid #CCC;
+            margin-top: 10px;
+        }
+        #container canvas {
+            top: 0;
+            left: 0;
+        }
+        body {
+            padding-top: 50px;
+        }
+        .starter-template {
+            text-align: center;
+        }
+        #image-selection {
+            width: 150px;
+            height: 35px;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .visibile {
+            display: block;
+        }
+        .spinner {
+            margin: 100px auto 0;
+            width: 70px;
+            text-align: center;
+        }
+
+        .spinner > div {
+            width: 18px;
+            height: 18px;
+            background-color: #333;
+
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        }
+
+        .spinner .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .spinner .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        @-webkit-keyframes sk-bouncedelay {
+            0%, 80%, 100% { -webkit-transform: scale(0) }
+            40% { -webkit-transform: scale(1.0) }
+        }
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">JS Graph Cut</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Pure Javascript GraphCut Image Segmentation</h1>
+        <p class="lead">Javascript Implementation of the Graph Cut technique for image segmentation</p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Image: </label>
+                    <select id="image-selection">
+                        <option value="black-cat.jpg">Black Cat</option>
+                        <option value="ct.jpg">Brain CT</option>
+                        <option value="chess.jpg">Chess</option>
+                        <option value="lena.jpg">Lena</option>
+                        <option value="rose.jpg">Rose</option>
+                        <option value="ultrassom.jpg">Ultrassom</option>
+                        <option value="fernando.jpg">Fernando</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <canvas id="original-image-canvas"></canvas>
+                <canvas id="segmented_image"></canvas>
+            </div>
+            <div id="spinner" class="spinner hidden">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <button id="foreground" class="btn btn-success">Foreground</button>
+            <button id="background" class="btn btn-danger">Background</button>
+            <!--<button id="erase">Erase</button>-->
+            <button id="segment" class="btn btn-primary">Segment</button>
+        </div>
+
+        <div class="container">
+            <h4>Graph Visualization</h4>
+            <div id="container">
+            </div>
+        </div>
+
+
+    </div>
+
+</div><!-- /.container -->
+
+<script src="./main.bundle.js"></script>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
